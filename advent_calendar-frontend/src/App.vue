@@ -1,36 +1,38 @@
 <template>
-    <section class="loading">
-        <div class="lds-dual-ring" v-if="isLoading"></div>
-    </section>
-    <div class="loading-background" v-if="isLoading"></div>
-    <main class="wrapper">
-        <h1>TSV Hürup Adventskalender</h1>
-        <section id="winners">
-            <h2 v-if="winners.length">Folgende Tickets haben etwas gewonnen:</h2>
-            <div v-for="entry in winners">
-                <ul class="numbers-list">
-                    <a :href="entry.url" target="_blank" class="numbers-list__link">
-                        <li v-for="number in entry.numbers" class="numbers-list__item">
-                            <p class="numbers-list__winner">{{ number.replace('#', '') }}</p>
-                            <p class="numbers-list__winner-hint">Klicken, um den Gewinn einzusehen</p>
-                        </li>
-                    </a>
-                </ul>
-            </div>
+    <main>
+        <section class="loading">
+            <div class="lds-dual-ring" v-if="isLoading"></div>
         </section>
-        <label for="newNumber">Gib eine neue Losnummer ein</label>
-        <section class="new-number">
-            <input v-model="newNumber" type="tel" class="new-number__input"/>
-            <button @click="addNumber" class="button">Hinzufügen</button>
+        <div class="loading-background" v-if="isLoading"></div>
+        <section class="wrapper">
+            <h1>TSV Hürup Adventskalender</h1>
+            <section id="winners">
+                <h2 v-if="winners.length">Folgende Tickets haben etwas gewonnen:</h2>
+                <div v-for="entry in winners">
+                    <ul class="numbers-list">
+                        <a :href="entry.url" target="_blank" class="numbers-list__link">
+                            <li v-for="number in entry.numbers" class="numbers-list__item">
+                                <p class="numbers-list__winner">{{ number.replace('#', '') }}</p>
+                                <p class="numbers-list__winner-hint">Klicken, um den Gewinn einzusehen</p>
+                            </li>
+                        </a>
+                    </ul>
+                </div>
+            </section>
+            <label for="newNumber">Gib eine neue Losnummer ein</label>
+            <section class="new-number">
+                <input v-model="newNumber" type="tel" class="new-number__input"/>
+                <button @click="addNumber" class="button">Hinzufügen</button>
+            </section>
+            <h2>Deine Lose</h2>
+            <ul name="numbers" class="numbers-list">
+                <li v-for="number in numbers.slice().reverse()" class="numbers-list__item">
+                    <p class="numbers-list__winner">{{ number.replace('#', '') }}</p>
+                    <button @click="removeNumber(number)" class="numbers-list__item-remove">X</button>
+                </li>
+            </ul>
+            <button @click="checkNumbers" class="button">Nummern überprüfen</button>
         </section>
-        <h2>Deine Lose</h2>
-        <ul name="numbers" class="numbers-list">
-            <li v-for="number in numbers.slice().reverse()" class="numbers-list__item">
-                <p class="numbers-list__winner">{{ number.replace('#', '') }}</p>
-                <button @click="removeNumber(number)" class="numbers-list__item-remove">X</button>
-            </li>
-        </ul>
-        <button @click="checkNumbers" class="button">Nummern überprüfen</button>
     </main>
 </template>
 
