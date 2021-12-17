@@ -84,7 +84,7 @@ export default defineComponent({
             window.scrollTo(0, 0);
         },
         async fetchWinners() {
-            const url = 'http://localhost:7777/winners';
+            const url = process.env.VUE_APP_API_URL + '/winners';
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
