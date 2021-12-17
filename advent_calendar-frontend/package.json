@@ -1,0 +1,26 @@
+{
+  "name": "advent_calendar-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --mode development --public localhost",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "register-service-worker": "^1.7.1",
+    "tslib": "^2.3.1",
+    "vue": "^3.0.0",
+    "vue-class-component": "^8.0.0-0",
+    "vue-router": "^4.0.10"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.5.0",
+    "@vue/cli-plugin-pwa": "^4.5.0",
+    "@vue/cli-plugin-typescript": "^4.5.0",
+    "@vue/cli-service": "^4.5.0",
+    "typescript": "~4.1.5",
+    "vue-template-compiler": "^2.6.11"
+  }
+}

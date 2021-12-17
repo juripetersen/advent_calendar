@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./advent_calendar-frontend
+      dockerfile: docker/application/application.Dockerfile
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html:delegated
+    ports:
+      - 8080:80
+    tty: true
+    restart: always
+
+  backend:
+    build:
+      context: ./advent_calendar-http
+      dockerfile: docker/application/application.Dockerfile
+    ports:
+      - 7777:7777
+    volumes:
+      - ./:/var/www/html
+    restart: always

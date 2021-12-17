@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  tooling:
+    build:
+      context: .
+      dockerfile: ./docker/tooling/tooling.Dockerfile
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html:delegated
+    ports:
+      - 8080:8080
+    tty: true
+    restart: always
